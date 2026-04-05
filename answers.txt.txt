@@ -1,0 +1,7 @@
+Câu 6.1:
+
+Câu 1:
+Nếu người dùng chọn "Cancel", phương thức sẽ trả về giá trị tương ứng (thường là 2). Nếu đóng hộp thoại mà không chọn gì, có thể trả về -1.
+
+Câu 2:
+Để tùy chỉnh các lựa chọn, ta có thể sử dụng phương thức JOptionPane.showOptionDialog(). Phương thức này cho phép tạo các nút theo ý muốn thay vì dùng mặc định.
