@@ -1,0 +1,13 @@
+Getter và Setter
+
+Câu hỏi: Khi nào nên sử dụng accessor methods?
+
+Getter và setter là các phương thức dùng để truy cập và thay đổi giá trị của các thuộc tính trong một lớp. Getter dùng để lấy giá trị, còn setter dùng để gán giá trị mới.
+
+Tuy nhiên, việc lạm dụng getter và setter có thể làm mất đi tính đóng gói (encapsulation) trong lập trình hướng đối tượng. Encapsulation là việc che giấu dữ liệu bên trong đối tượng và chỉ cho phép truy cập có kiểm soát. Nếu tất cả các thuộc tính đều có getter và setter, thì dữ liệu gần như bị công khai, làm giảm tính an toàn.
+
+Không nên sử dụng getter và setter khi chúng chỉ đơn giản là dùng để đọc và ghi dữ liệu mà không có bất kỳ xử lý hay kiểm soát nào. Điều này không mang lại lợi ích và làm thiết kế trở nên kém hiệu quả.
+
+Getter và setter nên được sử dụng khi cần kiểm soát dữ liệu. Ví dụ, setter có thể kiểm tra giá trị hợp lệ trước khi gán, hoặc getter có thể xử lý dữ liệu trước khi trả về.
+
+Kết luận, getter và setter chỉ nên được sử dụng khi thực sự cần thiết. Tránh lạm dụng để đảm bảo tính đóng gói và thiết kế hướng đối tượng tốt hơn.
