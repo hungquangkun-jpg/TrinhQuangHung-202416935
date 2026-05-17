@@ -1,49 +1,11 @@
-Họ và tên: Trịnh Quang Hưng
-MSSV: 202416935
-Báo cáo: Lab 03 - Các kỹ thuật lập trình hướng đối tượng cơ bản
+1. Tại sao lớp Media nên là lớp trừu tượng (abstract)?
 
--------------------------------------------------------
-1. CÂU HỎI PHẦN 2: THUỘC TÍNH VÀ PHƯƠNG THỨC STATIC
--------------------------------------------------------
-Câu hỏi: Mục đích của từ khóa 'static' trong lớp DigitalVideoDisc là gì?
-Trả lời: Từ khóa 'static' được dùng cho biến 'nbDigitalVideoDiscs' để biến này 
-thuộc về lớp chứ không thuộc về một đối tượng cụ thể. Điều này giúp tất cả các 
-đối tượng DVD chia sẻ cùng một biến đếm, từ đó có thể tự động tạo ID tăng dần 
-duy nhất cho mỗi DVD khi được khởi tạo.
+Trả lời: Lớp Media đại diện cho một khái niệm chung về các sản phẩm trong cửa hàng. Chúng ta không bao giờ muốn tạo ra một đối tượng "Media" chung chung vì mọi sản phẩm thực tế phải là một loại cụ thể như Book, DigitalVideoDisc hoặc CompactDisc. Việc đặt là abstract giúp ngăn chặn việc khởi tạo sai mục đích và đóng vai trò làm khuôn mẫu cho các lớp con kế thừa.
 
-Câu hỏi: Tại sao chúng ta nên dùng phương thức static để truy cập biến này?
-Trả lời: Sử dụng phương thức static (getter) cho phép chúng ta truy cập vào 
-tổng số DVD đã tạo mà không cần phải khởi tạo đối tượng DVD. Điều này đảm bảo 
-tính đóng gói và quản lý dữ liệu ở cấp độ lớp.
+2. Tại sao Playable là một Interface thay vì là một lớp cha?
 
--------------------------------------------------------
-2. CÂU HỎI PHẦN 3: ĐÈ PHƯƠNG THỨC (METHOD OVERLOADING)
--------------------------------------------------------
-Câu hỏi: Method Overloading là gì và tại sao nó hữu ích trong lớp Cart?
-Trả lời: Method Overloading (Nạp chồng phương thức) là tính năng cho phép một 
-lớp có nhiều phương thức cùng tên nhưng khác nhau về tham số (số lượng, kiểu 
-dữ liệu hoặc thứ tự). Trong lớp Cart, nó giúp phương thức 'addDigitalVideoDisc' 
-trở nên linh hoạt hơn: người dùng có thể thêm một đĩa, một mảng đĩa, hoặc 
-danh sách hai đĩa mà chỉ cần nhớ một tên hàm duy nhất.
+Trả lời: Trong Java, một lớp chỉ có thể kế thừa từ một lớp cha duy nhất (đơn kế thừa). Vì DVD và CD đã kế thừa từ lớp Disc rồi, chúng không thể kế thừa thêm một lớp "Playable" khác. Hơn nữa, không phải tất cả Media đều có thể "phát" (ví dụ: Sách không thể phát). Sử dụng interface giúp ta linh hoạt thêm khả năng "play" vào đúng các lớp cần thiết mà không phá vỡ cấu trúc cây kế thừa.
 
-Câu hỏi: Trình biên dịch phân biệt các phương thức nạp chồng như thế nào?
-Trả lời: Trình biên dịch phân biệt dựa trên "Method Signature" (Chữ ký phương 
-thức), bao gồm tên phương thức và danh sách các tham số của nó.
+3. Tại sao chúng ta cần ghi đè (override) phương thức equals()?
 
--------------------------------------------------------
-3. CÂU HỎI PHẦN 6: LỚP STORE (KHO HÀNG)
--------------------------------------------------------
-Câu hỏi: Sự khác biệt giữa lớp Cart và lớp Store là gì?
-Trả lời: 
-- Lớp Cart (Giỏ hàng): Đại diện cho giỏ hàng cá nhân của một khách hàng, tập 
-  trung vào việc tính tổng tiền và quản lý các mặt hàng sắp mua.
-- Lớp Store (Kho hàng): Đại diện cho kho lưu trữ của cửa hàng, quản lý tất cả 
-  các mặt hàng đang có sẵn để mọi khách hàng có thể xem và chọn lựa.
-
--------------------------------------------------------
-4. TÓM TẮT KẾT QUẢ KIỂM THỬ (TEST RESULTS)
--------------------------------------------------------
-- CartTest: Đã kiểm tra thành công logic thêm/xóa DVD, tính tổng tiền chính xác 
-  và thực hiện tìm kiếm theo ID/Tên hiển thị đúng kết quả.
-- StoreTest: Đã kiểm tra thành công việc quản lý kho hàng (thêm và xóa DVD 
-  khỏi danh sách của cửa hàng).
+Trả lời: Mặc định, phương thức equals() so sánh địa chỉ ô nhớ của hai đối tượng. Chúng ta cần ghi đè nó trong lớp Media để so sánh dựa trên tiêu đề (title), và trong lớp Track dựa trên cả tiêu đề và độ dài. Điều này cực kỳ quan trọng để các phương thức như contains() hoặc remove() của ArrayList hoạt động chính xác khi tìm kiếm sản phẩm trong giỏ hàng.
